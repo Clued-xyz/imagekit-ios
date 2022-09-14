@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class ImageKitUploader {
 
@@ -70,7 +71,7 @@ public class ImageKitUploader {
         progress: ((Progress) -> Void)? = nil,
         urlConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
         completion: @escaping (Result<(HTTPURLResponse?, UploadAPIResponse?), Error>) -> Void) {
-        let image = UIImagePNGRepresentation(file)!
+        let image = file.pngData()!
         self.upload(file: image, fileName: fileName, useUniqueFilename: useUniqueFilename, tags: tags, folder: folder, isPrivateFile: isPrivateFile, customCoordinates: customCoordinates, responseFields: responseFields, signatureHeaders: signatureHeaders, progress: progress, urlConfiguration: urlConfiguration, completion: completion)
     }
 

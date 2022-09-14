@@ -5,6 +5,7 @@
 //  Created by Abhinav Dhiman on 16/07/20.
 //
 import Foundation
+import UIKit
 
 public class ImagekitUrlConstructor {
     
