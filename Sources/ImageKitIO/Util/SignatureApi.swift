@@ -8,9 +8,14 @@
 import Foundation
 
 class SignatureAPI {
-    public static func getSignature(expire: String, headerMap: [String: String]?, completion: @escaping (Result<(HTTPURLResponse?, SignatureAPIResponse?), Error>) -> Void) {
+    public static func getSignature(expire: String, headerMap: [String: String] = [:], completion: @escaping (Result<(HTTPURLResponse?, SignatureAPIResponse?), Error>) -> Void) {
         let endpoint = UserDefaults.standard.string(forKey: UserDefaultKeys.KEY_IMAGEKIT_AUTHENTICATION_ENDPOINT)!
-        URLSession.shared.dataTask(with: URL(string: endpoint)!) {(data, response, error) in
+        var request = URLRequest(url: URL(string: endpoint)!)
+        for (field, value) in headerMap {
+            request.setValue(value, forHTTPHeaderField: field)
+        }
+        
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
                 if let error = error {
                     completion(Result.failure(IKError.HTTPError.transportError(error)))
                     return

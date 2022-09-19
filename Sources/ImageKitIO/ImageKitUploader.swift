@@ -19,7 +19,7 @@ public class ImageKitUploader {
         isPrivateFile: Bool? = false,
         customCoordinates: String? = "",
         responseFields: String? = "",
-        signatureHeaders: [String: String]? = [String: String](),
+        signatureHeaders: [String: String] = [:],
         progress: ((Progress) -> Void)? = nil,
         urlConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
         completion: @escaping (Result<(HTTPURLResponse?, UploadAPIResponse?), Error>) -> Void) {
@@ -67,7 +67,7 @@ public class ImageKitUploader {
         isPrivateFile: Bool? = false,
         customCoordinates: String? = "",
         responseFields: String? = "",
-        signatureHeaders: [String: String]? = [String: String](),
+        signatureHeaders: [String: String] = [:],
         progress: ((Progress) -> Void)? = nil,
         urlConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
         completion: @escaping (Result<(HTTPURLResponse?, UploadAPIResponse?), Error>) -> Void) {
@@ -84,7 +84,7 @@ public class ImageKitUploader {
         isPrivateFile: Bool? = false,
         customCoordinates: String? = "",
         responseFields: String? = "",
-        signatureHeaders: [String: String]? = [String: String](),
+        signatureHeaders: [String: String] = [:],
         progress: ((Progress) -> Void)? = nil,
         urlConfiguration: URLSessionConfiguration = URLSessionConfiguration.default,
         completion: @escaping (Result<(HTTPURLResponse?, UploadAPIResponse?), Error>) -> Void) {
