@@ -48,7 +48,9 @@ class UploadAPI: NSObject, URLSessionTaskDelegate {
             let multipartData = try formData.encode()
             request.httpBody = multipartData
             let uploadDelegate = UploadTaskDelegate()
-            let urlSession = URLSession(configuration: urlConfiguration, delegate: uploadDelegate, delegateQueue: URLSession.shared.delegateQueue)
+            let delegateQueue = OperationQueue()
+            delegateQueue.maxConcurrentOperationCount = 1
+            let urlSession = URLSession(configuration: urlConfiguration, delegate: uploadDelegate, delegateQueue: delegateQueue)
             uploadDelegate.uploadProgressHandler = progressClosure
             let task = urlSession.dataTask(with: request) { data, response, error in
                 if let error = error {
